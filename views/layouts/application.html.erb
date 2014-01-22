@@ -8,17 +8,52 @@
   <body>
     <h1>Anoop Joshi</h1>
     <p>
-      <h3> I'm a header</h3>
+      <h3> I'm a header</h3> 
       <p>Put things in the header</p>
       <%= link_to('This is a link to Google','http://www.google.co.uk') %>
       <%= link_to('This is a link to the News','http://news.bbc.co.uk') %>
       <%= link_to('This is a link to a Tech site','http://www.arstechnica.com') %>
-     </p>
+      
+      <br />
+<!-- 
+      <%= @request.query.inspect %>
+       -->
+     
+
+      </p>
+
     <hr />
     <div>
       <%= yield %>
     </div>
     <hr />
+    <br />
+
+    <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+            Hello there <%= @request.query['first_name'] %>
+        <% else %>
+            Enter your details:
+      <% end %>
+
+    <br />
+    <br />
+    <br />
+
+<div>
+    <form method='post' action="<%= @request.path %>">
+        First name: <input type="text" name="first_name" placeholder='first name'/><br />
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+    <br />
+    <br />
+    
+
+    <form method='post' action="<%= @request.path %>">
+        Email: <input type="text" name="email" placeholder='email address'/><br />
+        <input type="submit" value="Submit" />
+    </form>
+
     <div>
       <h3> </h3>
       <p>copyright 2014</p>
